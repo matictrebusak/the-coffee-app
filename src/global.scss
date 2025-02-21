@@ -1,8 +1,8 @@
-@import 'tailwindcss/base';
+@use "tailwindcss/base";
 
-@import 'tailwindcss/components';
+@use "tailwindcss/components";
 
-@import 'tailwindcss/utilities';
+@use "tailwindcss/utilities";
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
