@@ -1,0 +1,7 @@
+{
+  "name": "The coffee app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
