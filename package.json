@@ -11,7 +11,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "ios": "ionic capacitor run ios -l --external",
-    "android": "ionic capacitor run android -l --external"
+    "android": "ionic capacitor run android -l --external",
+    "generate:api": "openapi-generator-cli generate -i ./src/assets/open-api/api_wip.yml.yaml -g typescript-angular -o src/app/api/v1 --skip-validate-spec --additional-properties=ngVersion=19.1.7,npmName=restClient,supportsES6=true,npmVersion=10.5.0,modelPropertyNaming=original"
   },
   "private": true,
   "dependencies": {
@@ -48,6 +49,7 @@
     "@angular/language-service": "^19.0.0",
     "@capacitor/cli": "7.0.1",
     "@ionic/angular-toolkit": "^12.0.0",
+    "@openapitools/openapi-generator-cli": "^2.16.3",
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "@typescript-eslint/parser": "^8.18.0",

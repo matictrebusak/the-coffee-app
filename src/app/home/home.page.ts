@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
 } from '@ionic/angular/standalone';
+import { DefaultService } from '../api/v1';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-home',
@@ -30,5 +32,10 @@ import {
   imports: [IonHeader, IonToolbar, IonTitle, IonContent],
 })
 export default class HomePage {
-  constructor() {}
+  api = inject(DefaultService);
+  devices = toSignal(this.api.devicesGet());
+
+  constructor() {
+    effect(() => console.log(this.devices()));
+  }
 }
