@@ -11,7 +11,7 @@ import {
   template: `
     <ion-header [translucent]="true">
       <ion-toolbar>
-        <ion-title> Blank </ion-title>
+        <ion-title> Blank</ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -23,7 +23,7 @@ import {
       </ion-header>
 
       <div id="container">
-        <div class="text-red-500">Test</div>
+        <div class="text-red-500">Test322</div>
       </div>
     </ion-content>
   `,
