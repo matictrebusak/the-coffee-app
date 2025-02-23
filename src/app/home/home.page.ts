@@ -23,7 +23,7 @@ import {
       </ion-header>
 
       <div id="container">
-        <div class="text-red-500">Test322</div>
+        <div class="text-red-500">Test</div>
       </div>
     </ion-content>
   `,
