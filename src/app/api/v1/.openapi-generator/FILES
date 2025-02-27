@@ -18,8 +18,5 @@ model/profileStepsInner.ts
 model/scaleSnapshot.ts
 model/shotSettings.ts
 model/waterLevels.ts
-ng-package.json
-package.json
 param.ts
-tsconfig.json
 variables.ts

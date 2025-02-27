@@ -1,6 +1,6 @@
 {
-  "name": "the-coffee-app",
-  "version": "0.0.1",
+  "name": "starter",
+  "version": "1.0.0",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
@@ -12,7 +12,7 @@
     "lint": "ng lint",
     "ios": "ionic capacitor run ios -l --external",
     "android": "ionic capacitor run android -l --external",
-    "generate:api": "openapi-generator-cli generate -i ./src/assets/open-api/api_wip.yml.yaml -g typescript-angular -o src/app/api/v1 --skip-validate-spec --additional-properties=ngVersion=19.1.7,npmName=restClient,supportsES6=true,npmVersion=10.5.0,modelPropertyNaming=original"
+    "generate:api": "openapi-generator-cli generate -i ./src/assets/open-api/api_wip.yml.yaml -g typescript-angular -o src/app/api/v1"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +31,7 @@
     "@capacitor/ios": "^7.0.1",
     "@capacitor/keyboard": "7.0.0",
     "@capacitor/status-bar": "7.0.0",
+    "@capawesome/capacitor-file-picker": "^7.0.1",
     "@ionic/angular": "^8.0.0",
     "ionicons": "^7.0.0",
     "rxjs": "~7.8.0",
@@ -70,5 +71,5 @@
     "tailwindcss": "^3.1.6",
     "typescript": "~5.6.3"
   },
-  "description": "An Ionic project"
+  "description": "Add description for Starter"
 }

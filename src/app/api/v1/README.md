@@ -1,4 +1,4 @@
-# restClient@10.5.0
+# @
 
 This API provides endpoints to retrieve a list of Bluetooth devices, trigger a scan for new devices, manage DE1 espresso machine state and settings, and interact with a connected scale. 
 
@@ -24,7 +24,7 @@ Navigate to the folder of your consuming project and run one of next commands.
 _published:_
 
 ```console
-npm install restClient@10.5.0 --save
+npm install @ --save
 ```
 
 _without publishing (not recommended):_
@@ -46,7 +46,7 @@ npm link
 In your project:
 
 ```console
-npm link restClient
+npm link 
 ```
 
 __Note for Windows users:__ The Angular CLI has troubles to use linked npm packages.
@@ -59,7 +59,7 @@ In your Angular project:
 
 ```typescript
 // without configuring providers
-import { ApiModule } from 'restClient';
+import { ApiModule } from '';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -78,7 +78,7 @@ export class AppModule {}
 
 ```typescript
 // configuring providers
-import { ApiModule, Configuration, ConfigurationParameters } from 'restClient';
+import { ApiModule, Configuration, ConfigurationParameters } from '';
 
 export function apiConfigFactory (): Configuration {
   const params: ConfigurationParameters = {
@@ -98,7 +98,7 @@ export class AppModule {}
 
 ```typescript
 // configuring providers with an authentication service that manages your access tokens
-import { ApiModule, Configuration } from 'restClient';
+import { ApiModule, Configuration } from '';
 
 @NgModule({
     imports: [ ApiModule ],
@@ -122,7 +122,7 @@ export class AppModule {}
 ```
 
 ```typescript
-import { DefaultApi } from 'restClient';
+import { DefaultApi } from '';
 
 export class AppComponent {
     constructor(private apiGateway: DefaultApi) { }
@@ -162,7 +162,7 @@ export class AppModule {
 If different than the generated base path, during app bootstrap, you can provide the base path to your service.
 
 ```typescript
-import { BASE_PATH } from 'restClient';
+import { BASE_PATH } from '';
 
 bootstrap(AppComponent, [
     { provide: BASE_PATH, useValue: 'https://your-web-service.com' },
@@ -172,7 +172,7 @@ bootstrap(AppComponent, [
 or
 
 ```typescript
-import { BASE_PATH } from 'restClient';
+import { BASE_PATH } from '';
 
 @NgModule({
     imports: [],
@@ -197,7 +197,7 @@ export const environment = {
 In the src/app/app.module.ts:
 
 ```typescript
-import { BASE_PATH } from 'restClient';
+import { BASE_PATH } from '';
 import { environment } from '../environments/environment';
 
 @NgModule({
