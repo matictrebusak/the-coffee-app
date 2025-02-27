@@ -10,8 +10,12 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
+    "run-ionic-serve": "ionic serve",
+    "run-ionic-serve-prod": "ionic serve --prod --configuration=production",
     "ios": "ionic capacitor run ios -l --external",
+    "ios:prod": "ionic capacitor run ios -l --external --prod --configuration=production",
     "android": "ionic capacitor run android -l --external",
+    "android:prod": "ionic capacitor run android -l --external --prod --configuration=production",
     "generate:api": "openapi-generator-cli generate -i ./src/assets/open-api/api_wip.yml.yaml -g typescript-angular -o src/app/api/v1"
   },
   "private": true,
