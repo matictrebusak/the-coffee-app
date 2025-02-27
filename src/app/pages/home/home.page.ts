@@ -14,6 +14,7 @@ import {
 } from '../../api/v1';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FilePickerService } from 'src/app/services/file-picker.service';
+import { ApiService } from 'src/app/services/api.service';
 
 interface HomeState {
   devices: DevicesGet200ResponseInner[];
@@ -37,7 +38,9 @@ interface HomeState {
       </ion-header>
 
       <div id="container">
-        <div class="text-red-500">Test</div>
+        <div class="p-3">DE1 state: {{ api.de1State() }}</div>
+        <div class="p-3">Devices: {{ api.devices() }}</div>
+
         <ion-button (click)="open()">Load profile s</ion-button>
       </div>
     </ion-content>
@@ -45,21 +48,10 @@ interface HomeState {
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton],
 })
 export default class HomePage {
-  api = inject(DefaultService);
   filePicker = inject(FilePickerService);
-  devices = toSignal(this.api.devicesGet());
+  api = inject(ApiService);
 
-  // state
-  state = signal({});
-
-  // selectors
-
-  // sources
-  // loadDevices$ = this.api.devicesGet();
-
-  constructor() {
-    effect(() => console.log(this.devices()));
-  }
+  constructor() {}
 
   open() {
     this.filePicker
