@@ -7,11 +7,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { MachineSnapshot } from './machineSnapshot';
 
 
-export interface De1StateGet200Response { 
-    snapshot?: MachineSnapshot;
-    usbChargerEnabled?: boolean;
+export interface De1AdvancedSettingsRequest { 
+    heaterPh1Flow?: number | null;
+    heaterPh2Flow?: number | null;
+    heaterIdleTemp?: number | null;
+    heaterPh2Timeout?: number | null;
 }
 

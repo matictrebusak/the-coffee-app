@@ -9,9 +9,10 @@
  */
 
 
-export interface ProfileStepsInner { 
-    type?: string;
-    value?: number;
-    duration?: number;
+export interface De1AdvancedSettingsResponse { 
+    heaterPh1Flow?: number;
+    heaterPh2Flow?: number;
+    heaterIdleTemp?: number;
+    heaterPh2Timeout?: number;
 }
 

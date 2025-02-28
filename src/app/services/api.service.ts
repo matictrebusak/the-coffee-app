@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import {
-  De1StateGet200Response,
+  MachineSnapshot,
   DefaultService,
   DevicesGet200ResponseInner,
 } from '../api/v1';
@@ -8,7 +8,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 export interface ApiState {
   devices: DevicesGet200ResponseInner[];
-  de1State: De1StateGet200Response;
+  de1State: MachineSnapshot;
 }
 
 @Injectable({
@@ -24,8 +24,8 @@ export class ApiService {
   });
 
   // selectors
-  de1State = computed(() => this.state().de1State?.snapshot?.state);
-  devices = computed(() => this.state().devices);
+  de1State = computed(() => JSON.stringify(this.state().de1State?.state));
+  devices = computed(() => JSON.stringify(this.state().devices));
 
   // sources
   private devicesLoaded$ = this.defaultService.devicesGet();

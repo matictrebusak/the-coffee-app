@@ -8,9 +8,9 @@ import {
   IonButton,
 } from '@ionic/angular/standalone';
 import {
-  De1StateGet200Response,
   DefaultService,
   DevicesGet200ResponseInner,
+  MachineSnapshot,
 } from '../../api/v1';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FilePickerService } from 'src/app/services/file-picker.service';
@@ -18,7 +18,7 @@ import { ApiService } from 'src/app/services/api.service';
 
 interface HomeState {
   devices: DevicesGet200ResponseInner[];
-  de1state: De1StateGet200Response;
+  de1state: MachineSnapshot;
 }
 
 @Component({

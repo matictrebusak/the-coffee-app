@@ -7,7 +7,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ProfileStepsInner } from './profileStepsInner';
 
 
 export interface Profile { 
@@ -16,7 +15,7 @@ export interface Profile {
     notes?: string;
     author?: string;
     beverage_type?: string;
-    steps?: Array<ProfileStepsInner>;
+    steps?: Array<object>;
     target_volume?: number;
     target_weight?: number;
     target_volume_count_start?: number;

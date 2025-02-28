@@ -7,11 +7,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { MachineSnapshotState } from './machineSnapshotState';
 
 
 export interface MachineSnapshot { 
     timestamp?: string;
-    state?: object;
+    state?: MachineSnapshotState;
     flow?: number;
     pressure?: number;
     targetFlow?: number;
