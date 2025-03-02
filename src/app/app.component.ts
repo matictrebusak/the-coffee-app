@@ -1,15 +1,25 @@
-import { Component } from '@angular/core';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { Component, effect, inject, viewChild } from '@angular/core';
+import { IonApp, IonNav } from '@ionic/angular/standalone';
+import { NavigationService } from './services/navigation.service';
+import HomePage from './pages/home/home.page';
 
 @Component({
   selector: 'app-root',
   template: `
     <ion-app>
-      <ion-router-outlet></ion-router-outlet>
+      <ion-nav />
     </ion-app>
   `,
-  imports: [IonApp, IonRouterOutlet],
+  imports: [IonApp, IonNav],
 })
 export class AppComponent {
-  constructor() {}
+  navigation = inject(NavigationService);
+  nav = viewChild(IonNav);
+
+  constructor() {
+    effect(() => {
+      this.navigation.nav.set(this.nav());
+      this.navigation.setRoot(HomePage);
+    });
+  }
 }

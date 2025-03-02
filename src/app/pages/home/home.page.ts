@@ -1,5 +1,5 @@
 import { Profile } from './../../api/v1/model/profile';
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -7,41 +7,28 @@ import {
   IonContent,
   IonButton,
 } from '@ionic/angular/standalone';
-import {
-  DefaultService,
-  DevicesGet200ResponseInner,
-  MachineSnapshot,
-} from '../../api/v1';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
+
 import { FilePickerService } from 'src/app/services/file-picker.service';
 import { ApiService } from 'src/app/services/api.service';
-
-interface HomeState {
-  devices: DevicesGet200ResponseInner[];
-  de1state: MachineSnapshot;
-}
+import FlowStep1PrepareCoffeePage from '../flow-step-1-prepare-coffee/flow-step-1-prepare-coffee.page';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-home',
   template: `
     <ion-header [translucent]="true">
       <ion-toolbar>
-        <ion-title> Blank</ion-title>
+        <ion-title>Home</ion-title>
       </ion-toolbar>
     </ion-header>
 
     <ion-content [fullscreen]="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
       <div id="container">
         <div class="p-3">DE1 state: {{ api.de1State() }}</div>
         <div class="p-3">Devices: {{ api.devices() }}</div>
 
         <ion-button (click)="open()">Load profile s</ion-button>
+        <ion-button (click)="continue()">Next Page</ion-button>
       </div>
     </ion-content>
   `,
@@ -49,13 +36,16 @@ interface HomeState {
 })
 export default class HomePage {
   filePicker = inject(FilePickerService);
+  navigation = inject(NavigationService);
   api = inject(ApiService);
-
-  constructor() {}
 
   open() {
     this.filePicker
       .openJsonFile()
       .subscribe((profile: Profile) => console.log('Profile', profile));
+  }
+
+  continue() {
+    this.navigation.pushPage(FlowStep1PrepareCoffeePage);
   }
 }
