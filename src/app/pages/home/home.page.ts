@@ -12,13 +12,14 @@ import { FilePickerService } from 'src/app/services/file-picker.service';
 import { ApiService } from 'src/app/services/api.service';
 import FlowStep1PrepareCoffeePage from '../flow-step-1-prepare-coffee/flow-step-1-prepare-coffee.page';
 import { NavigationService } from 'src/app/services/navigation.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
   template: `
     <ion-header [translucent]="true">
       <ion-toolbar>
-        <ion-title>Home</ion-title>
+        <ion-title>{{ 'HOME.TITLE' | translate }}</ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -32,7 +33,14 @@ import { NavigationService } from 'src/app/services/navigation.service';
       </div>
     </ion-content>
   `,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton],
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonButton,
+    TranslateModule,
+  ],
 })
 export default class HomePage {
   filePicker = inject(FilePickerService);
