@@ -24,8 +24,8 @@ export class ApiService {
   });
 
   // selectors
-  de1State = computed(() => JSON.stringify(this.state().de1State?.state));
-  devices = computed(() => JSON.stringify(this.state().devices));
+  de1State = computed(() => this.state().de1State?.state);
+  devices = computed(() => this.state().devices);
 
   // sources
   private devicesLoaded$ = this.defaultService.devicesGet();

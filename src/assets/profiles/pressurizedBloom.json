@@ -1,80 +1,76 @@
 {
-"title": "Pressurized xl bloom 1.7",
-"author": "Vid",
-"notes": "Girl you gotta pressurize.\nCorrect limiters this time",
-"beverage_type": "espresso",
-"id": "69361470-a8ba-11ef-ba36-f3971fe0dbaa",
-"tank_temperature": "0.0",
-"target_weight": "55.0",
-"target_volume": "0.0",
-"target_volume_count_start": "1.0",
-"legacy_profile_type": "settings_2c",
-"type": "advanced",
-"lang": "en",
-"hidden": "0",
-"version": "2",
-"steps": [
-{
-"name": "Fill",
-"temperature": "91.0",
-"weight": "1.0",
-"sensor": "water",
-"pump": "pressure",
-"transition": "fast",
-"pressure": "3.0",
-"seconds": "30.0",
-"volume": "0.0"
-,
-"exit": {
-  "type": "pressure",
-  "condition": "over",
-  "value": "3.0"
+  "title": "Pressurized xl bloom 1.7",
+  "author": "Vid",
+  "notes": "Girl you gotta pressurize.\nCorrect limiters this time",
+  "beverage_type": "espresso",
+  "id": "69361470-a8ba-11ef-ba36-f3971fe0dbaa",
+  "tank_temperature": 0.0,
+  "target_weight": 55.0,
+  "target_volume": 0.0,
+  "target_volume_count_start": 1.0,
+  "legacy_profile_type": "settings_2c",
+  "type": "advanced",
+  "lang": "en",
+  "hidden": "0",
+  "version": "2",
+  "steps": [
+    {
+      "name": "Fill",
+      "temperature": "91.0",
+      "weight": "1.0",
+      "sensor": "water",
+      "pump": "pressure",
+      "transition": "fast",
+      "pressure": "3.0",
+      "seconds": "30.0",
+      "volume": "0.0",
+      "exit": {
+        "type": "pressure",
+        "condition": "over",
+        "value": "3.0"
+      }
+    },
+    {
+      "name": "bloom",
+      "temperature": "83.5",
+      "weight": "10.0",
+      "sensor": "water",
+      "pump": "pressure",
+      "transition": "fast",
+      "pressure": "1.0",
+      "seconds": "60.0",
+      "volume": "0.0"
+    },
+    {
+      "name": "ramp",
+      "temperature": "83.0",
+      "weight": "0.0",
+      "sensor": "water",
+      "pump": "pressure",
+      "transition": "smooth",
+      "pressure": "6.0",
+      "seconds": "12.0",
+      "volume": "0.0",
+      "exit": {
+        "type": "flow",
+        "condition": "over",
+        "value": "5.0"
+      }
+    },
+    {
+      "name": "extract",
+      "temperature": "75.0",
+      "weight": "0.0",
+      "sensor": "water",
+      "pump": "pressure",
+      "transition": "fast",
+      "pressure": "6.0",
+      "seconds": "127.0",
+      "volume": "0.0",
+      "limiter": {
+        "value": "4.5",
+        "range": "0.8"
+      }
+    }
+  ]
 }
-},
-{
-"name": "bloom",
-"temperature": "83.5",
-"weight": "10.0",
-"sensor": "water",
-"pump": "pressure",
-"transition": "fast",
-"pressure": "1.0",
-"seconds": "60.0",
-"volume": "0.0"
-},
-{
-"name": "ramp",
-"temperature": "83.0",
-"weight": "0.0",
-"sensor": "water",
-"pump": "pressure",
-"transition": "smooth",
-"pressure": "6.0",
-"seconds": "12.0",
-"volume": "0.0"
-,
-"exit": {
-  "type": "flow",
-  "condition": "over",
-  "value": "5.0"
-}
-},
-{
-"name": "extract",
-"temperature": "75.0",
-"weight": "0.0",
-"sensor": "water",
-"pump": "pressure",
-"transition": "fast",
-"pressure": "6.0",
-"seconds": "127.0",
-"volume": "0.0"
-,
-"limiter": {
-  "value": "4.5",
-  "range": "0.8"
-  }
-}
-]
-}
-
