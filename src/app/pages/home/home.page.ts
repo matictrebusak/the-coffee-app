@@ -41,8 +41,20 @@ interface SettingOption {
 
     <ion-content [fullscreen]="true">
       <div id="container">
-        <div class="p-3">DE1 state: {{ api.de1State() | json }}</div>
-        <div class="p-3">Devices: {{ api.devices() | json }}</div>
+        <div class="p-3">
+          {{ 'HOME.MACHINE' | translate }}: {{ api.de1State() | json }}
+        </div>
+        <div class="p-3 flex flex-col">
+          <p class="">{{ 'HOME.SCALE' | translate }}:</p>
+          @if (api.devices().length > 1) {
+          <p class="">{{ 'HOME.SCALE_READY' | translate }}</p>
+          } @else {
+          <p
+            (click)="api.refreshDevices$.next()"
+            [innerHTML]="'HOME.SCALE_TURN_ON' | translate"
+          ></p>
+          }
+        </div>
 
         @if (flowService.profile(); as profile) {
         <div class="p-3">
@@ -56,7 +68,9 @@ interface SettingOption {
         <ion-button (click)="flowService.resetProfile$.next()"
           >Reset profile</ion-button
         >
-        <ion-button (click)="continue()">Next Page</ion-button>
+        <ion-button (click)="continue()">{{
+          'HOME.BUTTON_CONTINUE' | translate
+        }}</ion-button>
       </div>
     </ion-content>
   `,

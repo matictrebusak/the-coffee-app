@@ -5,6 +5,15 @@ import {
   DevicesGet200ResponseInner,
 } from '../api/v1';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {
+  catchError,
+  concatMap,
+  EMPTY,
+  startWith,
+  Subject,
+  switchMap,
+  tap,
+} from 'rxjs';
 
 export interface ApiState {
   devices: DevicesGet200ResponseInner[];
@@ -24,11 +33,23 @@ export class ApiService {
   });
 
   // selectors
-  de1State = computed(() => this.state().de1State?.state);
+  de1State = computed(() => this.state().de1State?.state?.state);
   devices = computed(() => this.state().devices);
 
   // sources
-  private devicesLoaded$ = this.defaultService.devicesGet();
+  refreshDevices$ = new Subject<void>();
+  private devicesLoaded$ = this.refreshDevices$.pipe(
+    startWith(undefined), // Trigger the initial load
+    tap(() => console.log('Refreshing devices...')),
+    switchMap(() =>
+      this.defaultService.devicesGet().pipe(
+        catchError((error) => {
+          console.error('Error loading devices:', error);
+          return EMPTY;
+        })
+      )
+    )
+  );
   private de1StateLoaded$ = this.defaultService.de1StateGet();
 
   constructor() {

@@ -1,8 +1,11 @@
 {
   "HOME": {
     "TITLE": "Home",
-    "WELCOME": "Welcome to the Home page!",
-    "BUTTON_CONTINUE": "Continue"
+    "MACHINE": "Machine",
+    "SCALE": "Scale",
+    "SCALE_READY": "Ready",
+    "SCALE_TURN_ON": "Turn on scale and press <u>here</u>",
+    "BUTTON_CONTINUE": "Let's begin"
   },
   "FLOW_STEP_1": {
     "TITLE": "Step 1: Prepare the coffee",
