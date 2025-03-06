@@ -1,6 +1,34 @@
 {
   "HOME": {
     "TITLE": "Home",
-    "WELCOME": "Welcome to the Home page!"
+    "WELCOME": "Welcome to the Home page!",
+    "BUTTON_CONTINUE": "Continue"
+  },
+  "FLOW_STEP_1": {
+    "TITLE": "Step 1: Prepare the coffee",
+    "DESCRIPTION": "Measure %fg into the dosing cup. Set the grinder to %f.",
+    "BUTTON_CONTINUE": "Continue"
+  },
+  "FLOW_STEP_2": {
+    "TITLE": "Step 2: Almost there",
+    "DESCRIPTION": "Take the porta filter out, use the dosing cup to transfer the ground coffee to the porta filter basket.",
+    "BUTTON_CONTINUE": "Continue"
+  },
+  "FLOW_STEP_3": {
+    "TITLE": "Step 3: Tamping",
+    "DESCRIPTION": "Tamp the coffee. Lock the porta filter back into place.",
+    "BUTTON_CONTINUE": "I'm ready"
+  },
+  "FLOW_STEP_4": {
+    "TITLE": "Step 4: Making coffee",
+    "DESCRIPTION": "Making coffee",
+    "BUTTON_CONTINUE": "Continue"
+  },
+  "FLOW_STEP_5": {
+    "TITLE": "Finished",
+    "DESCRIPTION": "All done! Enjoy your coffee (don't forget to clean the porta filter).",
+    "BUTTON_BACK_TO_START": "Back to home",
+    "BUTTON_ANOTHER_ONE": "Another one",
+    "BUTTON_ADD_STEAM_MILK": "Add steam milk"
   }
 }

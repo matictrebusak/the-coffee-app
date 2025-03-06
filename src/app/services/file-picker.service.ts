@@ -19,7 +19,7 @@ export class FilePickerService {
       map((data) => atob(data)), // Convert base64 to readable json
       map((json) => JSON.parse(json) as Profile),
       catchError((error) => {
-        console.error('Error picking file', error);
+        console.error('Error opening profile json file', error);
         return EMPTY;
       })
     );

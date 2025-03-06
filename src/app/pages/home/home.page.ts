@@ -1,4 +1,4 @@
-import { Component, inject, viewChild } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -12,7 +12,7 @@ import {
 } from '@ionic/angular/standalone';
 
 import { ApiService } from 'src/app/services/api.service';
-import FlowStep1PrepareCoffeePage from '../flow-step-1-prepare-coffee/flow-step-1-prepare-coffee.page';
+import FlowStep1 from '../flow-step-1/flow-step-1.page';
 import { NavigationService } from 'src/app/services/navigation.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlowService } from 'src/app/services/flow.service';
@@ -97,6 +97,6 @@ export default class HomePage {
   }
 
   continue() {
-    this.navigation.pushPage(FlowStep1PrepareCoffeePage);
+    this.navigation.pushPage(FlowStep1);
   }
 }

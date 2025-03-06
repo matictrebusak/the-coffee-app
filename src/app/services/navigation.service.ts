@@ -23,4 +23,8 @@ export class NavigationService {
   popToRoot() {
     this.nav()?.popToRoot();
   }
+
+  popToIndex(pageIndex: number) {
+    this.nav()?.popTo(pageIndex);
+  }
 }
