@@ -40,9 +40,10 @@ interface SettingOption {
     </ion-header>
 
     <ion-content [fullscreen]="true">
-      <div id="container">
-        <div class="p-3">
-          {{ 'HOME.MACHINE' | translate }}: {{ api.de1State() | json }}
+      <div>
+        <div class="p-3 flex flex-col">
+          <p>{{ 'HOME.MACHINE' | translate }}:</p>
+          <p>{{ api.de1State() | json }}</p>
         </div>
         <div class="p-3 flex flex-col">
           <p class="">{{ 'HOME.SCALE' | translate }}:</p>
@@ -55,19 +56,22 @@ interface SettingOption {
           ></p>
           }
         </div>
+      </div>
 
-        @if (flowService.profile(); as profile) {
-        <div class="p-3">
-          Current profile: {{ profile.title }} by {{ profile.author }}
-        </div>
-        }
+      @if (flowService.profile(); as profile) {
+      <div class="p-3 flex flex-col">
+        <p>{{ 'HOME.CURRENT_PROFILE' | translate }}</p>
+        <p>{{ profile.title }} by {{ profile.author }}</p>
+      </div>
+      }
 
-        <ion-button (click)="flowService.changeProfile$.next()"
-          >Change profile</ion-button
-        >
-        <ion-button (click)="flowService.resetProfile$.next()"
-          >Reset profile</ion-button
-        >
+      <div class="flex flex-col w-[200px] pt-8 mx-auto">
+        <ion-button (click)="flowService.changeProfile$.next()">{{
+          'HOME.BUTTON_CHANGE_PROFILE' | translate
+        }}</ion-button>
+        <ion-button (click)="flowService.resetProfile$.next()">{{
+          'HOME.BUTTON_RESET_PROFILE' | translate
+        }}</ion-button>
         <ion-button (click)="continue()">{{
           'HOME.BUTTON_CONTINUE' | translate
         }}</ion-button>

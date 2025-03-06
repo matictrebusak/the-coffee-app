@@ -25,7 +25,7 @@ import FlowStep2Page from '../flow-step-2/flow-step-2.page';
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <div class="">
+      <div class="p-3">
         {{
           sprintf(
             'FLOW_STEP_1.DESCRIPTION' | translate,
@@ -34,9 +34,11 @@ import FlowStep2Page from '../flow-step-2/flow-step-2.page';
           )
         }}
       </div>
-      <ion-button (click)="continue()">{{
-        'FLOW_STEP_1.BUTTON_CONTINUE' | translate
-      }}</ion-button>
+      <div class="flex flex-col w-[200px] pt-8 mx-auto">
+        <ion-button (click)="continue()">{{
+          'FLOW_STEP_1.BUTTON_CONTINUE' | translate
+        }}</ion-button>
+      </div>
     </ion-content>
   `,
   imports: [

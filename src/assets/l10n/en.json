@@ -5,6 +5,9 @@
     "SCALE": "Scale",
     "SCALE_READY": "Ready",
     "SCALE_TURN_ON": "Turn on scale and press <u>here</u>",
+    "CURRENT_PROFILE": "Current profile",
+    "BUTTON_CHANGE_PROFILE": "Change profile",
+    "BUTTON_RESET_PROFILE": "Reset profile",
     "BUTTON_CONTINUE": "Let's begin"
   },
   "FLOW_STEP_1": {

@@ -19,18 +19,20 @@ import { TranslatePipe } from '@ngx-translate/core';
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <div class="">
+      <div class="p-3">
         {{ 'FLOW_STEP_5.DESCRIPTION' | translate }}
       </div>
-      <ion-button (click)="backToStart()">{{
-        'FLOW_STEP_5.BUTTON_BACK_TO_START' | translate
-      }}</ion-button>
-      <ion-button (click)="anotherOne()">{{
-        'FLOW_STEP_5.BUTTON_ANOTHER_ONE' | translate
-      }}</ion-button>
-      <ion-button (click)="addSteamMilk()">{{
-        'FLOW_STEP_5.BUTTON_ADD_STEAM_MILK' | translate
-      }}</ion-button>
+      <div class="flex flex-col w-[200px] pt-8 mx-auto">
+        <ion-button (click)="backToStart()">{{
+          'FLOW_STEP_5.BUTTON_BACK_TO_START' | translate
+        }}</ion-button>
+        <ion-button (click)="anotherOne()">{{
+          'FLOW_STEP_5.BUTTON_ANOTHER_ONE' | translate
+        }}</ion-button>
+        <ion-button (click)="addSteamMilk()">{{
+          'FLOW_STEP_5.BUTTON_ADD_STEAM_MILK' | translate
+        }}</ion-button>
+      </div>
     </ion-content>
   `,
   imports: [

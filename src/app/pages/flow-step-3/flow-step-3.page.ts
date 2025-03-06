@@ -25,12 +25,14 @@ import FlowStep4Page from '../flow-step-4/flow-step-4.page';
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <div class="">
+      <div class="p-3">
         {{ 'FLOW_STEP_3.DESCRIPTION' | translate }}
       </div>
-      <ion-button (click)="continue()">{{
-        'FLOW_STEP_3.BUTTON_CONTINUE' | translate
-      }}</ion-button>
+      <div class="flex flex-col w-[200px] pt-8 mx-auto">
+        <ion-button (click)="continue()">{{
+          'FLOW_STEP_3.BUTTON_CONTINUE' | translate
+        }}</ion-button>
+      </div>
     </ion-content>
   `,
   imports: [
