@@ -115,6 +115,7 @@ export default class HomePage {
   }
 
   continue() {
+    this.api.uploadProfile$.next(this.flowService.profile());
     this.navigation.pushPage(FlowStep1);
   }
 }

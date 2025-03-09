@@ -3,6 +3,7 @@ import {
   MachineSnapshot,
   DefaultService,
   DevicesGet200ResponseInner,
+  Profile,
 } from '../api/v1';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -51,6 +52,7 @@ export class ApiService {
     )
   );
   private de1StateLoaded$ = this.defaultService.de1StateGet();
+  uploadProfile$ = new Subject<Profile>();
 
   constructor() {
     // reducers
@@ -61,5 +63,21 @@ export class ApiService {
     this.de1StateLoaded$.pipe(takeUntilDestroyed()).subscribe((de1State) => {
       this.state.update((state) => ({ ...state, de1State }));
     });
+
+    this.uploadProfile$
+      .pipe(
+        takeUntilDestroyed(),
+        tap(() => console.log('Uploading profile...')),
+        switchMap((profile) =>
+          this.defaultService.de1ProfilePost(profile).pipe(
+            catchError((error) => {
+              console.error('Error posting profile:', error);
+              return EMPTY;
+            })
+          )
+        ),
+        tap(() => console.log('Profile posted'))
+      )
+      .subscribe(() => {});
   }
 }
