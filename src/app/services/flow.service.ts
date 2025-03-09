@@ -1,9 +1,17 @@
-import { Injectable, effect, inject } from '@angular/core';
+import {
+  Injectable,
+  ResourceStatus,
+  WritableSignal,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { Subject, switchMap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { StorageService } from './storage.service';
 import { FilePickerService } from './file-picker.service';
 import * as defaultProfile from '../../assets/profiles/pressurizedBloom.json';
+import { Profile } from '../api/v1';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +25,7 @@ export class FlowService {
   resetProfile$ = new Subject<void>();
 
   // selectors
-  profile = this.storage.loadLastProfile().value ?? defaultProfile;
+  profile: WritableSignal<Profile> = this.storage.loadLastProfile().value;
 
   constructor() {
     // reducers
