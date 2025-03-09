@@ -7,10 +7,17 @@ import { HttpClient } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from './environments/environment';
 
 const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (
   http: HttpClient
 ) => new TranslateHttpLoader(http, './assets/l10n/', '.json');
+
+const config: SocketIoConfig = {
+  url: environment.tabletIP + '/ws/v1/de1/snapshot',
+  options: {},
+};
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -24,6 +31,7 @@ bootstrapApplication(AppComponent, {
           deps: [HttpClient],
         },
       }),
+      SocketIoModule.forRoot(config),
     ]),
   ],
 });

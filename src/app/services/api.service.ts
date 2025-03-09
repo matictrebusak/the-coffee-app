@@ -2,22 +2,14 @@ import { computed, inject, Injectable, signal } from '@angular/core';
 import {
   MachineSnapshot,
   DefaultService,
-  DevicesGet200ResponseInner,
   Profile,
+  ApiV1DevicesGet200ResponseInner,
 } from '../api/v1';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import {
-  catchError,
-  concatMap,
-  EMPTY,
-  startWith,
-  Subject,
-  switchMap,
-  tap,
-} from 'rxjs';
+import { catchError, EMPTY, startWith, Subject, switchMap, tap } from 'rxjs';
 
 export interface ApiState {
-  devices: DevicesGet200ResponseInner[];
+  devices: ApiV1DevicesGet200ResponseInner[];
   de1State: MachineSnapshot;
 }
 
@@ -43,7 +35,7 @@ export class ApiService {
     startWith(undefined), // Trigger the initial load
     tap(() => console.log('Refreshing devices...')),
     switchMap(() =>
-      this.defaultService.devicesGet().pipe(
+      this.defaultService.apiV1DevicesGet().pipe(
         catchError((error) => {
           console.error('Error loading devices:', error);
           return EMPTY;
@@ -51,7 +43,7 @@ export class ApiService {
       )
     )
   );
-  private de1StateLoaded$ = this.defaultService.de1StateGet();
+  private de1StateLoaded$ = this.defaultService.apiV1De1StateGet();
   uploadProfile$ = new Subject<Profile>();
 
   constructor() {
@@ -69,7 +61,7 @@ export class ApiService {
         takeUntilDestroyed(),
         tap(() => console.log('Uploading profile...')),
         switchMap((profile) =>
-          this.defaultService.de1ProfilePost(profile).pipe(
+          this.defaultService.apiV1De1ProfilePost(profile).pipe(
             catchError((error) => {
               console.error('Error posting profile:', error);
               return EMPTY;

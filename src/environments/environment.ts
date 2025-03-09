@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  tabletIP: 'http://localhost:8080/api/v1',
+  tabletIP: 'http://localhost:8080',
 };
 
 /*

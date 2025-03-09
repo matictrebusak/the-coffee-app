@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 api.module.ts
 api/api.ts
@@ -8,11 +7,14 @@ configuration.ts
 encoder.ts
 git_push.sh
 index.ts
+model/apiV1DevicesGet200ResponseInner.ts
 model/de1AdvancedSettingsRequest.ts
 model/de1AdvancedSettingsResponse.ts
+model/de1RawMessage.ts
+model/de1RawMessageType.ts
+model/de1RawOperationType.ts
 model/de1SettingsRequest.ts
 model/de1SettingsResponse.ts
-model/devicesGet200ResponseInner.ts
 model/machineSnapshot.ts
 model/machineSnapshotState.ts
 model/machineState.ts

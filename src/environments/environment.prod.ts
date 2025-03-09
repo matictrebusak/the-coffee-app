@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  tabletIP: 'http://localhost:8080/api/v1',
+  tabletIP: 'http://localhost:8080',
 };

@@ -19,6 +19,8 @@ import { FlowService } from 'src/app/services/flow.service';
 import { JsonPipe } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { settingsOutline } from 'ionicons/icons';
+import { Socket } from 'ngx-socket-io';
+import { map, tap } from 'rxjs';
 
 interface SettingOption {
   label: string;
@@ -94,6 +96,7 @@ export default class HomePage {
   flowService = inject(FlowService);
   api = inject(ApiService);
   navigation = inject(NavigationService);
+  socket = inject(Socket);
 
   options: SettingOption[] = [
     {
@@ -115,7 +118,15 @@ export default class HomePage {
   }
 
   continue() {
-    this.api.uploadProfile$.next(this.flowService.profile());
-    this.navigation.pushPage(FlowStep1);
+    // this.api.uploadProfile$.next(this.flowService.profile());
+    // this.navigation.pushPage(FlowStep1);
+    this.getMessage();
+  }
+
+  getMessage() {
+    return this.socket.fromEvent('message').pipe(
+      map((data) => data.msg),
+      tap((msg) => console.log('Message:', msg))
+    );
   }
 }
