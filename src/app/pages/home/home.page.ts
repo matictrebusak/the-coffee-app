@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -19,7 +19,8 @@ import { FlowService } from 'src/app/services/flow.service';
 import { JsonPipe } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { settingsOutline } from 'ionicons/icons';
-import { map, tap } from 'rxjs';
+import { map, Subscription, tap } from 'rxjs';
+import { SocketService } from 'src/app/services/socket.service';
 
 interface SettingOption {
   label: string;
@@ -91,10 +92,13 @@ interface SettingOption {
     IonIcon,
   ],
 })
-export default class HomePage {
+export default class HomePage implements OnDestroy {
   flowService = inject(FlowService);
   api = inject(ApiService);
   navigation = inject(NavigationService);
+  socketService = inject(SocketService);
+
+  private messageSubscription: Subscription | null = null;
 
   options: SettingOption[] = [
     {
@@ -118,5 +122,16 @@ export default class HomePage {
   continue() {
     // this.api.uploadProfile$.next(this.flowService.profile());
     // this.navigation.pushPage(FlowStep1);
+
+    this.messageSubscription = this.socketService
+      .getMessages()
+      .subscribe((message) => {
+        console.log('Message received:', message);
+      });
+  }
+
+  ngOnDestroy() {
+    this.messageSubscription?.unsubscribe();
+    this.socketService.closeConnection();
   }
 }
