@@ -20,7 +20,7 @@ export function provideApi(
 ): EnvironmentProviders {
   return makeEnvironmentProviders([
     // { provide: Configuration, useValue: withConfiguration },
-    { provide: BASE_PATH, useValue: environment.tabletIP },
+    { provide: BASE_PATH, useValue: 'http://' + environment.tabletIP },
     provideHttpClient(),
   ]);
 }

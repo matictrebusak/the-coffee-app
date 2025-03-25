@@ -1,5 +1,6 @@
+import { JsonPipe } from '@angular/common';
 import { NavigationService } from '../../services/navigation.service';
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -12,6 +13,7 @@ import {
 import { sprintf } from 'sprintf-js';
 import { TranslatePipe } from '@ngx-translate/core';
 import FlowStep5Page from '../flow-step-5/flow-step-5.page';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-flow-step-4',
@@ -28,6 +30,9 @@ import FlowStep5Page from '../flow-step-5/flow-step-5.page';
       <div class="p-3">
         {{ 'FLOW_STEP_4.DESCRIPTION' | translate }}
       </div>
+      @if (socketService.lastMachineSnapshot(); as snapshot) {
+      <div class="p-3">{{ snapshot | json }}</div>
+      }
       <div class="flex flex-col w-[200px] pt-8 mx-auto">
         <ion-button (click)="continue()">{{
           'FLOW_STEP_4.BUTTON_CONTINUE' | translate
@@ -44,10 +49,12 @@ import FlowStep5Page from '../flow-step-5/flow-step-5.page';
     IonButtons,
     IonButton,
     TranslatePipe,
+    JsonPipe,
   ],
 })
 export default class FlowStep4Page {
   navigation = inject(NavigationService);
+  socketService = inject(SocketService);
   sprintf = sprintf;
 
   continue() {
