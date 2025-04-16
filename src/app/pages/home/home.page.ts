@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -28,6 +28,7 @@ interface SettingOption {
 
 @Component({
   selector: 'app-home',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ion-header [translucent]="true">
       <ion-toolbar>
@@ -48,22 +49,23 @@ interface SettingOption {
         </div>
         <div class="p-3 flex flex-col">
           <p class="">{{ 'HOME.SCALE' | translate }}:</p>
+          <pre>{{ api.devices() | json }}</pre>
           @if (api.devices().length > 1) {
-          <p class="">{{ 'HOME.SCALE_READY' | translate }}</p>
+            <p class="">{{ 'HOME.SCALE_READY' | translate }}</p>
           } @else {
-          <p
-            (click)="api.refreshDevices$.next()"
-            [innerHTML]="'HOME.SCALE_TURN_ON' | translate"
-          ></p>
+            <p
+              (click)="api.refreshDevices$.next()"
+              [innerHTML]="'HOME.SCALE_TURN_ON' | translate"
+            ></p>
           }
         </div>
       </div>
 
       @if (flowService.profile(); as profile) {
-      <div class="p-3 flex flex-col">
-        <p>{{ 'HOME.CURRENT_PROFILE' | translate }}</p>
-        <p>{{ profile.title }} by {{ profile.author }}</p>
-      </div>
+        <div class="p-3 flex flex-col">
+          <p>{{ 'HOME.CURRENT_PROFILE' | translate }}</p>
+          <p>{{ profile.title }} by {{ profile.author }}</p>
+        </div>
       }
 
       <div class="flex flex-col w-[200px] pt-8 mx-auto">
